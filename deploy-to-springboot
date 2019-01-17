@@ -32,7 +32,7 @@ node{
    stage('Email Notification'){
       mail bcc: '', body: '''Hi Welcome to jenkins email alerts
       Thanks
-      Namjith''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'naravind@wisilica.com'
+      Namjith''', cc: '', from: 'devjenkins@wisilica.com', replyTo: '', subject: 'Jenkins Job', to: 'naravind@wisilica.com'
    }
    
 
