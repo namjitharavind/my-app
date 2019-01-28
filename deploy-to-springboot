@@ -26,7 +26,7 @@ node{
    stage('Deploy to Tomcat'){
       
       sshagent(['springboot']) {
-         sh 'scp -o StrictHostKeyChecking=no target/*.jar ubuntu@dev-springboot.wisilica.com:/tmp/'
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@dev-springboot.wisilica.com:/tmp/'
       }
    }
   
