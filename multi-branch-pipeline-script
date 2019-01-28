@@ -1,6 +1,4 @@
 node{
-when {
-                branch 'master'
           
  stage('SCM Checkout'){
      git 'https://github.com/namjitharavind/my-app.git'
@@ -27,16 +25,18 @@ when {
           }
       }
    stage('Deploy to Tomcat'){
-      
-      sshagent(['springboot']) {
-         sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@dev-springboot.wisilica.com:/tmp/'
-      }
-   }
+      when {
+              branch "master"
+           }
+            sshagent(['springboot']) {
+              sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@dev-springboot.wisilica.com:/tmp/'
+            }
+    }
    stage('Email Notification'){
       mail bcc: '', body: '''Hi Welcome to jenkins email alerts
       Thanks
       Jenkins''', cc: '', from: 'devjenkins@wisilica.com', replyTo: '', subject: 'Jenkins Job', to: 'naravind@wisilica.com'
    }
-  }
+  
 
 }
