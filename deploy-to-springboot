@@ -29,6 +29,11 @@ node{
          sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@dev-springboot.wisilica.com:/tmp/'
       }
    }
+   stage('Email Notification'){
+      mail bcc: '', body: '''Hi Welcome to jenkins email alerts
+      Thanks
+      CloudAdmin''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'naravind@wisilica.com'
+   }
   
 
 }
